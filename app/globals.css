@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   UH TECH – FUTURISTIC GLOW THEME
+================================ */
+
+:root {
+  --bg-main: #020617;
+  --bg-panel: rgba(15, 23, 42, 0.7);
+  --bg-card: rgba(30, 41, 59, 0.55);
+
+  --neon-blue: #38bdf8;
+  --neon-cyan: #22d3ee;
+  --neon-purple: #818cf8;
+
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --radius: 14px;
+
+  --glow: 0 0 20px rgba(56, 189, 248, 0.25);
+  --soft-glow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+/* ===============================
+   RESET
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: radial-gradient(circle at top, #020617, #000);
+  color: var(--text-main);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+  height: 58px;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.85),
+    rgba(2, 6, 23, 0.65)
+  );
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--soft-glow);
+  z-index: 50;
+  position: sticky;
+  top: 0;
+}
+
+/* ===============================
+   SIDEBAR
+================================ */
+
+.sidebar {
+  width: 256px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 40;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.95),
+    rgba(2, 6, 23, 0.85)
+  );
+  backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 6px 0 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: var(--text-main);
+  text-decoration: none; /* remove underline */
+  font-size: 16px; /* bigger text */
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(56, 189, 248, 0.12);
+  box-shadow: var(--soft-glow);
+  transform: translateX(2px);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.25),
+    rgba(34, 211, 238, 0.1)
+  );
+  box-shadow: var(--glow);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  animation: glowPulse 2.5s infinite;
+}
+
+/* ===============================
+   MAIN LAYOUT FIX
+================================ */
+
+.dashboard-main {
+  margin-left: 256px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-main.full {
+  margin-left: 0;
+}
+
+/* ===============================
+   DASHBOARD CARDS
+================================ */
+
+.dashboard-card {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.6),
+    rgba(15, 23, 42, 0.6)
+  );
+  backdrop-filter: blur(18px);
+  border-radius: var(--radius);
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s ease;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.15);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.dashboard-card h4 {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.dashboard-card p {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 8px;
+  color: var(--text-main);
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.9),
+    rgba(34, 211, 238, 0.9)
+  );
+  color: black;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ===============================
+   INPUTS
+================================ */
+
+.input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: var(--text-main);
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: var(--soft-glow);
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(0, 180, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(0, 180, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(0, 180, 255, 0.4);
+  }
+}
+
+.page-enter {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+.card-animate {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+.card-animate:nth-child(1) { animation-delay: 0.05s; }
+.card-animate:nth-child(2) { animation-delay: 0.1s; }
+.card-animate:nth-child(3) { animation-delay: 0.15s; }
+.card-animate:nth-child(4) { animation-delay: 0.2s; }
+
+/* ===============================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.4);
+  border-radius: 10px;
+}
+
+/* ===============================
+   MOBILE FIX
+================================ */
+
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: 16px;
+  }
+}
+/* ===============================
+   FLOATING GLOW CURSOR
+================================ */
+
+.glow-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, #38bdf8, transparent 70%);
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.9),
+    0 0 40px rgba(56, 189, 248, 0.6),
+    0 0 60px rgba(56, 189, 248, 0.4);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.08s ease-out;
+  mix-blend-mode: screen;
+}
+
+.glow-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+  filter: blur(12px);
+  transform: translate(-50%, -50%);
+  z-index: 9998;
+  transition: transform 0.18s ease-out;
+}
+body {
+  cursor: none;
+}
